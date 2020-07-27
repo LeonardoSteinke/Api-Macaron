@@ -1,6 +1,6 @@
 exports.up = function (knex) {
   return knex.schema.createTable("receita", function (table) {
-    table.increments("id").primary().notNullable();
+    table.increments("id").unique().primary();
     table.string("nome").notNullable();
     table.string("categoria").notNullable();
     table.string("modo_preparo").notNullable();
@@ -11,7 +11,8 @@ exports.up = function (knex) {
     table.integer("tipo").notNullable();
     table.integer("id_usuario").notNullable();
     table.foreign("id_usuario").references("id").inTable("usuario");
-    table.timestamps();
+    table.timestamp('created_at').defaultTo(knex.fn.now());
+    table.timestamp('updated_at').defaultTo(knex.fn.now());
   });
 };
 

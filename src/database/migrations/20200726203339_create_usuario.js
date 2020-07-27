@@ -1,6 +1,6 @@
 exports.up = function (knex) {
   return knex.schema.createTable("usuario", function (table) {
-    table.increments("id").primary().notNullable();
+    table.increments("id").unique().primary();
     table.string("nome").notNullable();
     table.string("email").notNullable();
     table.string("senha").notNullable();
@@ -8,7 +8,8 @@ exports.up = function (knex) {
     table.string("pais");
     table.string("foto");
     table.integer("tolerancias");
-    table.timestamps();
+    table.timestamp('created_at').defaultTo(knex.fn.now());
+    table.timestamp('updated_at').defaultTo(knex.fn.now());
   });
 };
 
