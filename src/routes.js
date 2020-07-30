@@ -11,7 +11,7 @@ const CalendarioReceitaController = require("./controllers/CalendarioReceitaCont
 const SessionController = require("./controllers/SessionController");
 
 //Rota Session
-routes.get('/session', SessionController.login);
+routes.post('/session', SessionController.login);
 
 //Rotas dos Usuários
 routes.get("/usuario", UsuarioController.index);
