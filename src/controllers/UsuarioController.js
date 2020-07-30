@@ -8,13 +8,16 @@ module.exports = {
   },
   async create(req, res) {
     const { nome, email, senha } = req.body;
-
-    await connection("usuario").insert({
-      nome,
-      email,
-      senha,
-    });
-    return res.json({ nome });
+    try {
+      await connection("usuario").insert({
+        nome,
+        email,
+        senha,
+      });
+      return res.json({ nome });
+    } catch (error) {
+      return res.json({error: "Esse e-mail já foi cadastrado"});
+    }
   },
 
   async update(req, res) {

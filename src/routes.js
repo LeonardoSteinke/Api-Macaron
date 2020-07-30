@@ -8,6 +8,10 @@ const ComentarioController = require("./controllers/ComentarioController");
 const IngredienteReceitaController = require("./controllers/IngredienteReceitaController");
 const ReceitaUsuarioController = require("./controllers/ReceitaUsuarioController");
 const CalendarioReceitaController = require("./controllers/CalendarioReceitaController");
+const SessionController = require("./controllers/SessionController");
+
+//Rota Session
+routes.get('/session', SessionController.login);
 
 //Rotas dos Usuários
 routes.get("/usuario", UsuarioController.index);
