@@ -3,7 +3,7 @@ const connection = require("../database/connections");
 module.exports = {
   async index(req, res) {
     return req.params.id
-      ? res.json(await connection("usuario").where({ id: req.params.id }))
+      ? res.json(await connection("usuario").where({ id: req.params.id }).first())
       : res.json(await connection("usuario"));
   },
   async create(req, res) {

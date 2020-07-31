@@ -52,8 +52,7 @@ routes.delete("/receita/ingredientes/:id", IngredienteReceitaController.delete);
 
 //Rotas ReceitaUsuario
 routes.get("/usuario/receita/:id", ReceitaUsuarioController.index);
-routes.post("/usuario/receita", ReceitaUsuarioController.create);
-routes.put("/usuario/receita", ReceitaUsuarioController.create);
+routes.put("/usuario/receita/:id", ReceitaUsuarioController.update);
 routes.delete("/usuario/receita/:id", ReceitaUsuarioController.delete);
 
 //Rotas CalendarioReceita
