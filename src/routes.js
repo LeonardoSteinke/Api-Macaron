@@ -25,7 +25,7 @@ routes.delete("/usuario/:id", UsuarioController.delete);
 
 //Rotas das Receitas
 routes.get("/receita", ReceitaController.index);
-routes.get("/receita/:id", UsuarioController.index);
+routes.get("/receita/:id", ReceitaController.index);
 routes.post("/receita", ReceitaController.create);
 routes.put("/receita/:id", ReceitaController.update);
 routes.delete("/receita/:id", ReceitaController.delete);
