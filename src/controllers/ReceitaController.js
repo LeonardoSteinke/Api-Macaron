@@ -43,7 +43,7 @@ module.exports = {
         id_receita,
         id_usuario,
       });
-      return res.json();
+      return res.json({ id_receita });
     } catch (error) {
       return res.json({ error: "Ocorreu um erro" });
     }
