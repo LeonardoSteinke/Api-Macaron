@@ -10,6 +10,9 @@ const ReceitaUsuarioController = require("./controllers/ReceitaUsuarioController
 const CalendarioReceitaController = require("./controllers/CalendarioReceitaController");
 const SessionController = require("./controllers/SessionController");
 
+
+//npx knex migrate:latest
+
 //Rota Session
 routes.post('/session', SessionController.login);
 

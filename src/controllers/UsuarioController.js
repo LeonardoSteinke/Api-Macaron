@@ -14,7 +14,7 @@ module.exports = {
         email,
         senha,
       });
-      return res.json({ nome });
+      return res.json(await connection("usuario").select("id").where({email: email}).first());
     } catch (error) {
       return res.json({error: "Esse e-mail já foi cadastrado"});
     }

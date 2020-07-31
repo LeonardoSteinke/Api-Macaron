@@ -3,7 +3,9 @@ const connection = require("../database/connections");
 module.exports = {
   async index(req, res) {
     return req.params.id
-      ? res.json(await connection("receita").where({ id: req.params.id }))
+      ? res
+          .json(await connection("receita").where({ id: req.params.id }))
+          .first()
       : res.json(await connection("receita"));
   },
   async create(req, res) {
@@ -19,19 +21,18 @@ module.exports = {
       id_usuario,
     } = req.body;
 
-    return res.json(
-      await connection("receita").insert({
-        categoria,
-        nome,
-        modo_preparo,
-        tempo_preparo,
-        dificuldade,
-        porcoes,
-        avaliacao,
-        tipo,
-        id_usuario,
-      })
-    );
+    await connection("receita").insert({
+      categoria,
+      nome,
+      modo_preparo,
+      tempo_preparo,
+      dificuldade,
+      porcoes,
+      avaliacao,
+      tipo,
+      id_usuario,
+    });
+    return res.json();
   },
   async update(req, res) {
     const { id } = req.params;
