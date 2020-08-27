@@ -9,6 +9,7 @@ const IngredienteReceitaController = require("./controllers/IngredienteReceitaCo
 const ReceitaUsuarioController = require("./controllers/ReceitaUsuarioController");
 const CalendarioReceitaController = require("./controllers/CalendarioReceitaController");
 const SessionController = require("./controllers/SessionController");
+const UsuarioIngredienteController = require("./controllers/UsuarioIngredienteController");
 
 
 //npx knex migrate:latest
@@ -49,6 +50,12 @@ routes.get("/receita/ingredientes/:id", IngredienteReceitaController.index);
 routes.post("/receita/ingredientes", IngredienteReceitaController.create);
 routes.put("/receita/ingrediente/:id", IngredienteReceitaController.update);
 routes.delete("/receita/ingredientes/:id", IngredienteReceitaController.delete);
+
+//Rotas UsuarioIngrediente
+routes.get("/usuario/ingredientes/:id", UsuarioIngredienteController.index);
+routes.post("/usuario/ingredientes", UsuarioIngredienteController.create);
+routes.put("/usuario/ingrediente/:id", UsuarioIngredienteController.update);
+routes.delete("/usuario/ingredientes/:id", UsuarioIngredienteController.delete);
 
 //Rotas ReceitaUsuario
 routes.get("/usuario/receita/:id", ReceitaUsuarioController.index);
