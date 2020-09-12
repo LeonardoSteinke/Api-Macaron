@@ -20,7 +20,7 @@ module.exports = {
       unidade_medida,
       quantidade
     });
-    return res.json({ nome });
+    return res.json(await connection("ingrediente_receita").where({ id_receita: id_receita }));
   },
 
   async update(req, res) {
