@@ -4,13 +4,13 @@ module.exports = {
   async index(req, res) {
     return req.params.id
       ? res.json(
-          await connection("receita").where({ id: req.params.id }).first()
-        )
+        await connection("receita").where({ id: req.params.id }).first()
+      )
       : res.json(await connection("receita"));
   },
 
   async findByName(req, res) {
-    return await connection("receita").where( 'nome', 'like', `%${req.params.nome}%` );
+    return await connection("receita").where('nome', 'like', `%${req.params.nome}%`);
   },
 
   async create(req, res) {
@@ -37,17 +37,19 @@ module.exports = {
         tipo,
         id_usuario,
       });
-      return await connection("receita")
+      const teste = await connection("receita")
         .where({ nome: nome, id_usuario: id_usuario, categoria: categoria })
         .first();
 
-//      const id_receita = id;
+      console.log(teste);
 
-    //  await connection("receita_usuario").insert({
-    //    id_receita,
-    //    id_usuario,
-    //  });
-    //  return res.json({ id_receita });
+      //      const id_receita = id;
+
+      //  await connection("receita_usuario").insert({
+      //    id_receita,
+      //    id_usuario,
+      //  });
+      //  return res.json({ id_receita });
     } catch (error) {
       return res.json({ error: "Ocorreu um erro" });
     }
