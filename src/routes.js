@@ -39,7 +39,7 @@ routes.delete("/usuario/receita/:id", ReceitaUsuarioController.delete);
 
 //Rotas dos Comentarios
 routes.get("/comentario", ComentarioController.index);
-routes.get("/comentario/:id", ComentarioController.index);
+routes.gaet("/comentario/:id", ComentarioController.index);
 routes.post("/comentario", ComentarioController.create);
 routes.put("/comentario/:id", ComentarioController.update);
 routes.delete("/comentario/:id", ComentarioController.delete);

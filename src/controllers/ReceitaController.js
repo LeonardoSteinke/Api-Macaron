@@ -10,7 +10,7 @@ module.exports = {
   },
 
   async findByName(req, res) {
-    return await connection("receita").where( 'nome', 'like',  `%${req.params.nome}%` );
+    return await connection("receita").where( 'nome', 'like', `%${req.params.nome}%` );
   },
 
   async create(req, res) {
@@ -37,17 +37,17 @@ module.exports = {
         tipo,
         id_usuario,
       });
-      const { id } = await connection("receita")
+      return await connection("receita")
         .where({ nome: nome, id_usuario: id_usuario, categoria: categoria })
         .first();
 
-      const id_receita = id;
+//      const id_receita = id;
 
-      await connection("receita_usuario").insert({
-        id_receita,
-        id_usuario,
-      });
-      return res.json({ id_receita });
+    //  await connection("receita_usuario").insert({
+    //    id_receita,
+    //    id_usuario,
+    //  });
+    //  return res.json({ id_receita });
     } catch (error) {
       return res.json({ error: "Ocorreu um erro" });
     }
