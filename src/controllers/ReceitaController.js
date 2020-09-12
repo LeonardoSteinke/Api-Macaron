@@ -9,6 +9,10 @@ module.exports = {
       : res.json(await connection("receita"));
   },
 
+  async findByName(req, res) {
+    return await connection("receita").where( 'nome', 'like',  `%${req.params.nome}%` );
+  },
+
   async create(req, res) {
     const {
       categoria,

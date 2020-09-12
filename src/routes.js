@@ -2,14 +2,13 @@ const express = require("express");
 const routes = express.Router();
 
 const UsuarioController = require("./controllers/UsuarioController");
-const ReceitaController = require("./controllers/ReceitaController");
-const IngredienteController = require("./controllers/IngredienteController");
-const ComentarioController = require("./controllers/ComentarioController");
-const IngredienteReceitaController = require("./controllers/IngredienteReceitaController");
-const ReceitaUsuarioController = require("./controllers/ReceitaUsuarioController");
-const CalendarioReceitaController = require("./controllers/CalendarioReceitaController");
-const SessionController = require("./controllers/SessionController");
 const UsuarioIngredienteController = require("./controllers/UsuarioIngredienteController");
+const ReceitaController = require("./controllers/ReceitaController");
+const ReceitaUsuarioController = require("./controllers/ReceitaUsuarioController");
+const IngredienteReceitaController = require("./controllers/IngredienteReceitaController");
+const CalendarioReceitaController = require("./controllers/CalendarioReceitaController");
+const ComentarioController = require("./controllers/ComentarioController");
+const SessionController = require("./controllers/SessionController");
 
 
 //npx knex migrate:latest
@@ -27,16 +26,16 @@ routes.delete("/usuario/:id", UsuarioController.delete);
 //Rotas das Receitas
 routes.get("/receita", ReceitaController.index);
 routes.get("/receita/:id", ReceitaController.index);
+routes.get("/receita/:nome", ReceitaController.findByName);
 routes.post("/receita", ReceitaController.create);
 routes.put("/receita/:id", ReceitaController.update);
 routes.delete("/receita/:id", ReceitaController.delete);
 
-//Rotas dos Ingredientes
-routes.get("/ingrediente", IngredienteController.index);
-routes.get("/ingrediente/:id", IngredienteController.index);
-routes.post("/ingrediente", IngredienteController.create);
-routes.put("/ingrediente/:id", IngredienteController.update);
-routes.delete("/ingrediente/:id", IngredienteController.delete);
+//Rotas ReceitaUsuario
+//Lista todas as receitas a partir do id do usuario
+routes.get("/usuario/receita/:id", ReceitaUsuarioController.index);
+routes.put("/usuario/receita/:id", ReceitaUsuarioController.update);
+routes.delete("/usuario/receita/:id", ReceitaUsuarioController.delete);
 
 //Rotas dos Comentarios
 routes.get("/comentario", ComentarioController.index);
@@ -56,11 +55,6 @@ routes.get("/usuario/ingredientes/:id", UsuarioIngredienteController.index);
 routes.post("/usuario/ingredientes", UsuarioIngredienteController.create);
 routes.put("/usuario/ingrediente/:id", UsuarioIngredienteController.update);
 routes.delete("/usuario/ingredientes/:id", UsuarioIngredienteController.delete);
-
-//Rotas ReceitaUsuario
-routes.get("/usuario/receita/:id", ReceitaUsuarioController.index);
-routes.put("/usuario/receita/:id", ReceitaUsuarioController.update);
-routes.delete("/usuario/receita/:id", ReceitaUsuarioController.delete);
 
 //Rotas CalendarioReceita
 routes.get("/usuario/calendario/:id", CalendarioReceitaController.index);
