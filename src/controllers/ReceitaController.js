@@ -37,19 +37,9 @@ module.exports = {
         tipo,
         id_usuario,
       });
-      const teste = await connection("receita")
+      return res.json(await connection("receita")
         .where({ nome: nome, id_usuario: id_usuario, categoria: categoria })
-        .first();
-
-      console.log(teste);
-
-      //      const id_receita = id;
-
-      //  await connection("receita_usuario").insert({
-      //    id_receita,
-      //    id_usuario,
-      //  });
-      //  return res.json({ id_receita });
+        .first());
     } catch (error) {
       return res.json({ error: "Ocorreu um erro" });
     }
