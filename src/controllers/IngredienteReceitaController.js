@@ -9,13 +9,15 @@ module.exports = {
   async create(req, res) {
     const {
       id_receita,
-      id_ingrediente,
+      ingrediente,
+      unidade_medida,
       quantidade
     } = req.body;
 
     await connection("ingrediente_receita").insert({
       id_receita,
-      id_ingrediente,
+      ingrediente,
+      unidade_medida,
       quantidade
     });
     return res.json({ nome });
