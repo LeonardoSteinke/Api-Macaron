@@ -1,8 +1,8 @@
 exports.up = function (knex) {
   return knex.schema.createTable("ingrediente_receita", function (table) {
     table.increments("id").unique().primary();
-    table.integer("id_receita").notNullable();
-    table.foreign("id_receita").references("id").inTable("receita");
+    table.integer("id_secundario").notNullable();
+    table.foreign("id_secundario").references("id").inTable("receita");
     table.string("ingrediente").notNullable();
     table.integer("unidade_medida").notNullable();
     table.integer("quantidade").notNullable();

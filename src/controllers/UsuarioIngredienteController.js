@@ -1,44 +1,43 @@
-const connection = require('../database/connections');
-const { index } = require('./CalendarioReceitaController');
+const connection = require("../database/connections");
 
 module.exports = {
-    async index(req, res) {
-        const response = await connection("usuario_ingrediente").where({
-            id_usuario: req.params.id,
-        });
-        return response;
-    },
-    async create(req, res) {
-        const { id_ingrediente, id_usuario, quantidade } = req.body;
+  async index(req, res) {
+    return req.params.id
+      ? res.json(await connection("usuario_ingrediente").where({ id_usuario: req.params.id }))
+      : res.json(await connection("usuario_ingrediente"));
+  },
+  async create(req, res) {
+    const {
+      id,
+      ingrediente,
+      unidade_medida,
+      quantidade
+    } = req.body;
 
-        return res.json(
-            await connection("usuario_ingrediente").insert({
-                id_ingrediente,
-                id_usuario,
-                quantidade
-            })
-        );
-    },
-    async update(req, res) {
-        const { quantidade } = req.body;
-        const { id } = req.params;
+    await connection("usuario_ingrediente").insert({
+      id_usuario: id,
+      ingrediente,
+      unidade_medida,
+      quantidade
+    });
+    return res.json(await connection("usuario_ingrediente").where({ id_usuario: id }));
+  },
 
-        return res.json(
-            await connection("usuario")
-                .update({
-                   quantidade
-                })
-                .where({ id: id })
-        );
-    },
+  async update(req, res) {
+    const { quantidade } = req.body;
+    const { id } = req.params;
 
-    async delete(req, res) {
-        const { id } = req.params;
-        return res.json(
-            await connection("usuario_ingrediente").delete().where({ id: id })
-        );
-    },
+    return res.json(
+      await connection("usuario_ingrediente")
+        .update({
+          quantidade
+        })
+        .where({ id: id })
+    );
+  },
 
-
-
-}
+  async delete(req, res) {
+    const { id } = req.params;
+    return res.json(await connection("usuario_ingrediente").delete().where({ id: id }));
+  },
+};
