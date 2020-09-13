@@ -8,19 +8,19 @@ module.exports = {
   },
   async create(req, res) {
     const {
-      id,
+      id_secundario,
       ingrediente,
       unidade_medida,
       quantidade
     } = req.body;
 
     await connection("usuario_ingrediente").insert({
-      id_usuario: id,
+      id_usuario: id_secundario,
       ingrediente,
       unidade_medida,
       quantidade
     });
-    return res.json(await connection("usuario_ingrediente").where({ id_usuario: id }));
+    return res.json(await connection("usuario_ingrediente").where({ id_usuario: id_secundario }));
   },
 
   async update(req, res) {
