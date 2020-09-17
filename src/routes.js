@@ -34,8 +34,6 @@ routes.delete("/receita/:id", ReceitaController.delete);
 //Rotas ReceitaUsuario
 //Lista todas as receitas a partir do id do usuario
 routes.get("/usuario/receita/:id", ReceitaUsuarioController.index);
-routes.put("/usuario/receita/:id", ReceitaUsuarioController.update);
-routes.delete("/usuario/receita/:id", ReceitaUsuarioController.delete);
 
 //Rotas dos Comentarios
 routes.get("/comentario", ComentarioController.index);
