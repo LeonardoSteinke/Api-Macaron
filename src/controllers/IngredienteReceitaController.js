@@ -2,7 +2,7 @@ const connection = require("../database/connections");
 
 module.exports = {
   async index(req, res) {
-    return req.params.id & res.json(await connection("ingrediente_receita").where({ id: req.params.id }))
+    return req.params.id & res.json(await connection("ingrediente_receita").where({ id_secundario: req.params.id }));
 
   },
   async create(req, res) {
