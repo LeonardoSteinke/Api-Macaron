@@ -2,9 +2,8 @@ const connection = require("../database/connections");
 
 module.exports = {
   async index(req, res) {
-    return req.params.id
-      ? res.json(await connection("usuario_ingrediente").where({ id_secundario: req.params.id }))
-      : res.json(await connection("usuario_ingrediente"));
+    return req.params.id & res.json(await connection("usuario_ingrediente").where({ id_secundario: req.params.id }))
+
   },
   async create(req, res) {
     const {
@@ -20,7 +19,7 @@ module.exports = {
       unidade_medida,
       quantidade
     });
-    return res.json(200);
+    return res.json(await connection("usuario_ingrediente").where({ id_secundario: id_secundario }));
   },
 
   async update(req, res) {
