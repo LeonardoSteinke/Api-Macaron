@@ -15,7 +15,7 @@ module.exports = {
     } = req.body;
 
     await connection("usuario_ingrediente").insert({
-      id_usuario: id_secundario,
+      id_secundario,
       ingrediente,
       unidade_medida,
       quantidade

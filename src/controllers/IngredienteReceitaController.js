@@ -14,12 +14,12 @@ module.exports = {
     } = req.body;
 
     await connection("ingrediente_receita").insert({
-      id_receita: id_secundario,
+      id_secundario,
       ingrediente,
       unidade_medida,
       quantidade
     });
-    return res.json(await connection("ingrediente_receita").where({ id_receita: id_secundario }));
+    return res.json(await connection("ingrediente_receita").where({ id_secundario: id_secundario }));
   },
 
   async update(req, res) {
