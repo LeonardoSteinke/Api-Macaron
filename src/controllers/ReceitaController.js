@@ -10,7 +10,7 @@ module.exports = {
   },
 
   async findByName(req, res) {
-    return await connection("receita").where('nome', 'like', `%${req.params.nome}%`);
+    return res.json(await connection("receita").where('nome', 'like', `%${req.params.nome}%`));
   },
 
   async create(req, res) {
