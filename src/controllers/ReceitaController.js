@@ -14,32 +14,12 @@ module.exports = {
   },
 
   async create(req, res) {
-    const {
-      categoria,
-      nome,
-      modo_preparo,
-      tempo_preparo,
-      dificuldade,
-      porcoes,
-      avaliacao,
-      tipo,
-      id_usuario,
-    } = req.body;
+
     try {
-      await connection("receita").insert({
-        categoria,
-        nome,
-        modo_preparo,
-        tempo_preparo,
-        dificuldade,
-        porcoes,
-        avaliacao,
-        tipo,
-        id_usuario,
-      });
-      return res.json(await connection("receita")
-        .where({ nome: nome, id_usuario: id_usuario, categoria: categoria })
-        .first());
+      return res.json(await connection("receita").insert(
+        req.body
+      ));
+      
     } catch (error) {
       return res.json({ error: "Ocorreu um erro" });
     }
