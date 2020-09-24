@@ -2,11 +2,10 @@ const connection = require("../database/connections");
 
 module.exports = {
   async index(req, res) {
-    return req.params.id
-      ? res.json(
-        await connection("receita").where({ id: req.params.id }).first()
-      )
-      : res.json(await connection("receita"));
+    return req.params.id ?
+      res.json(await connection("receita").where({ id: req.params.id }).first())
+      :
+      res.json(await connection("receita"));
   },
 
   async findByName(req, res) {
@@ -19,7 +18,7 @@ module.exports = {
       return res.json(await connection("receita").insert(
         req.body
       ));
-      
+
     } catch (error) {
       return res.json({ error: "Ocorreu um erro" });
     }

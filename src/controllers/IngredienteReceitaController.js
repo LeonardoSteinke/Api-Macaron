@@ -2,7 +2,18 @@ const connection = require("../database/connections");
 
 module.exports = {
   async index(req, res) {
-    return req.params.id & res.json(await connection("ingrediente_receita").where({ id_secundario: req.params.id }));
+    console.log("entrou no index");
+    return req.params.id > 0 ?
+      res.json(await connection("ingrediente_receita").where({ id_secundario: req.params.id }))
+      :
+      res.json(await connection("ingrediente_receita").select());
+
+  },
+  async searchByName(req, res) {
+    const { ingrediente } = req.body;
+    console.log(ingrediente);
+    return req.body &
+      res.json(await connection("ingrediente_receita").where({ingrediente: ingrediente}));
 
   },
   async create(req, res) {

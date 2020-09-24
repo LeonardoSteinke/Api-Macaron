@@ -26,7 +26,6 @@ routes.delete("/usuario/:id", UsuarioController.delete);
 //Rotas das Receitas
 routes.get("/receita", ReceitaController.index);
 routes.get("/receita/:id", ReceitaController.index);
-routes.get("/receita/:nome", ReceitaController.findByName);
 routes.post("/receita", ReceitaController.create);
 routes.put("/receita/:id", ReceitaController.update);
 routes.delete("/receita/:id", ReceitaController.delete);
@@ -43,7 +42,7 @@ routes.put("/comentario/:id", ComentarioController.update);
 routes.delete("/comentario/:id", ComentarioController.delete);
 
 //Rotas IngredienteReceita
-routes.get("/receita/ingredientes/", IngredienteReceitaController.index);
+routes.get("/receitas/ingredientes/", IngredienteReceitaController.searchByName);
 routes.get("/receita/ingredientes/:id", IngredienteReceitaController.index);
 routes.post("/receita/ingredientes", IngredienteReceitaController.create);
 routes.put("/receita/ingrediente/:id", IngredienteReceitaController.update);
