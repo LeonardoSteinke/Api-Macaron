@@ -10,10 +10,8 @@ module.exports = {
 
   },
   async searchByName(req, res) {
-    const { ingrediente } = req.body;
-    console.log(ingrediente);
-    return req.body &
-      res.json(await connection("ingrediente_receita").where({ingrediente: ingrediente}));
+    return req.params.id &
+      res.json(await connection("ingrediente_receita").where({ingrediente: req.params.id}));
 
   },
   async create(req, res) {

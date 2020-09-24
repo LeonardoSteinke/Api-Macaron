@@ -42,7 +42,7 @@ routes.put("/comentario/:id", ComentarioController.update);
 routes.delete("/comentario/:id", ComentarioController.delete);
 
 //Rotas IngredienteReceita
-routes.get("/receitas/ingredientes/", IngredienteReceitaController.searchByName);
+routes.get("/receitas/ingredientes/:id", IngredienteReceitaController.searchByName);
 routes.get("/receita/ingredientes/:id", IngredienteReceitaController.index);
 routes.post("/receita/ingredientes", IngredienteReceitaController.create);
 routes.put("/receita/ingrediente/:id", IngredienteReceitaController.update);
